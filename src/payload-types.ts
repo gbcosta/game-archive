@@ -204,6 +204,7 @@ export interface Article {
   slug: string;
   game: number | Game;
   category: number | Category;
+  relatedArticles?: (number | Article)[] | null;
   content: {
     root: {
       type: string;
@@ -219,9 +220,9 @@ export interface Article {
     };
     [k: string]: unknown;
   };
-  status?: ('draft' | 'published') | null;
   updatedAt: string;
   createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -383,10 +384,11 @@ export interface ArticlesSelect<T extends boolean = true> {
   slug?: T;
   game?: T;
   category?: T;
+  relatedArticles?: T;
   content?: T;
-  status?: T;
   updatedAt?: T;
   createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
